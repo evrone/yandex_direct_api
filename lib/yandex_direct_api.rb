@@ -1,4 +1,4 @@
-module Yadirect
+module YandexDirectApi
   require 'proxy'
   require 'api_error'
   require 'curb'

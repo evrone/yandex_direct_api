@@ -1,4 +1,4 @@
-module Yadirect
+module YandexDirectApi
 	require 'net/http'
   class Proxy
     EP_YANDEX_DIRECT_V4 = 'https://api-sandbox.direct.yandex.ru/json-api/v4/'
@@ -36,7 +36,7 @@ module Yadirect
       puts "yadirect output: #{hash}" if @debug
 
       if (hash.include?("error_code"))
-        raise Yadirect::ApiError, hash
+        raise YandexDirectApi::ApiError, hash
       else
         hash["data"]
       end

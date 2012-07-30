@@ -1,9 +1,9 @@
 #encoding: utf-8
 require 'spec_helper'
-require 'yadirect'
+require 'yandex_direct_api'
 require 'json'
 
-describe Yadirect::Proxy do
+describe YandexDirectApi::Proxy do
 
   before(:all) do
     cert_dir = '/home/sashich/cert'
@@ -13,7 +13,7 @@ describe Yadirect::Proxy do
     params  = {:cert_key => cert_key, :cacert => cacert, :cert => cert, :debug=>true}
 
     puts params.inspect
-    @proxy = Yadirect::Proxy.new(params)
+    @proxy = YandexDirectApi::Proxy.new(params)
   end
 
   it "PingAPI" do
