@@ -1,4 +1,8 @@
-Простая библиотека для работа с API Яндекс.Директ
+Простая библиотека для работы с API Яндекс.Директ
 
-Инициализация: TODO
+1. Инициализация:
+rails g yandex_direct_api:install
+
+2. Конфигурируем
+vim config/initializers/yandex_direct_api_init.rb
 

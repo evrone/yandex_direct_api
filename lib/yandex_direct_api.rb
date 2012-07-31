@@ -6,5 +6,9 @@ module YandexDirectApi
   require 'hash'
   require 'array'
   require 'string'
+
+	def setup
+		yield self
+	end
 end
 
