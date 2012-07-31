@@ -1,16 +1,15 @@
 module YandexDirectApi
 	require 'net/http'
   class Proxy
-    EP_YANDEX_DIRECT_V4 = 'https://api-sandbox.direct.yandex.ru/json-api/v4/'
-		ACCESS_TOKEN = "b2f334cbbc36432e8f7e435736b1a9ea"
     attr_accessor :debug, :locale
 
     def initialize params
+			raise "You mast use access token for auth, mebe you foget write check config/initializers/yandex_direct_api_init.rb or generate it rails g yandex_direct_api:install" if YandexDirectApi.access_token.nil? || YandexDirectApi.access_token.length == 0
       @params = params
       @locale = 'RU' || params[:locale]
       @debug = false || params[:debug]
 			@application_id = params[:application_id]
-			@token = ACCESS_TOKEN
+			@token = YandexDirectApi.access_token
     end
 
     def invoke method, args
@@ -22,7 +21,7 @@ module YandexDirectApi
       end
       json_object = JSON.generate({:method => method, :locale => @locale, :login => "devandart", :application_id => @application_id, :token => @token, :param => args})
       puts "yadirect input: #{json_object}" if @debug
-			uri = URI(EP_YANDEX_DIRECT_V4)
+			uri = URI(YandexDirectApi.ep_yandex_direct_v4)
 
 			c = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https', :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
 		  	req = Net::HTTP::Post.new uri.request_uri
