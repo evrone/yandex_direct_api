@@ -8,6 +8,7 @@ module YandexDirectApi
       @params = params
       @locale = 'RU' || params[:locale]
       @debug = false || params[:debug]
+			@login = params[:login] ? params[:login] : "agrom"
 			@application_id = params[:application_id]
 			@token = YandexDirectApi.access_token
     end
@@ -19,7 +20,7 @@ module YandexDirectApi
         when Array then args.camelize_each
         else args
       end
-      json_object = JSON.generate({:method => method, :locale => @locale, :login => "devandart", :application_id => @application_id, :token => @token, :param => args})
+      json_object = JSON.generate({:method => method, :locale => @locale, :login => @login, :application_id => @application_id, :token => @token, :param => args})
       puts "yadirect input: #{json_object}" if @debug
 			uri = URI(YandexDirectApi.ep_yandex_direct_v4)
 
@@ -30,7 +31,6 @@ module YandexDirectApi
 			  response = http.request(req) # Net::HTTPResponse object
 			end
 
-#			puts "body_str = #{c.body}"
       hash =  JSON.parse(c.body)
       puts "yadirect output: #{hash}" if @debug
 
@@ -41,8 +41,12 @@ module YandexDirectApi
       end
     end
 
-    def method_missing(name, args, &block)
-	    ya_params = (args.class == Fixnum) ? args : to_hash_params(args)
+    def method_missing(name, args = nil, &block)
+      ya_params = unless args == nil
+        (args.class == Fixnum) ? args : to_hash_params(args)
+      else
+        nil
+      end
       object = invoke(name.to_s.to_camelcase, ya_params)
     end
 
