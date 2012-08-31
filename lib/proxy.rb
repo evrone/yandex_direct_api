@@ -3,18 +3,17 @@ module YandexDirectApi
   class Proxy
     attr_accessor :debug, :locale
 
-    def initialize params
+    def initialize params = {}
 			raise "You mast use access token for auth, mebe you foget write check config/initializers/yandex_direct_api_init.rb or generate it rails g yandex_direct_api:install" if YandexDirectApi.access_token.nil? || YandexDirectApi.access_token.length == 0
       @params = params
-      @locale = 'RU' || params[:locale]
+      @locale = YandexDirectApi.locale
       @debug = false || params[:debug]
-			@login = params[:login] ? params[:login] : "agrom"
-			@application_id = params[:application_id]
+			@login = YandexDirectApi.login
+      @application_id = YandexDirectApi.application_id
 			@token = YandexDirectApi.access_token
     end
 
     def invoke method, args
-
       args = case args
         when Hash then args.camelize_keys
         when Array then args.camelize_each

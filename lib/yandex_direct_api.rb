@@ -15,6 +15,18 @@ module YandexDirectApi
 	mattr_accessor :access_token
 	@@access_token = nil
 
+  # application id 
+  mattr_accessor :application_id
+  @@application_id
+
+  # auth login
+  mattr_accessor :login
+  @@login
+
+  # locale, default en
+  mattr_accessor :locale
+  @@locale
+
 	def self.setup
 		yield self
 	end
