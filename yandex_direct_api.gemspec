@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date = %q{2012-07-30}
   s.description = %q{A simple yandex.direct ruby wrapper}
   s.email = %q{devandart@ya.ru}
-  s.extra_rdoc_files = [%q{CHANGELOG}, %q{LICENSE}, %q{README}, %q{lib/api_error.rb}, %q{lib/hash.rb}, %q{lib/proxy.rb}, %q{lib/string.rb}, %q{lib/yandex_direct_api.rb}]
+  s.extra_rdoc_files = [%q{CHANGELOG}, %q{LICENSE}, %q{README.md}, %q{lib/api_error.rb}, %q{lib/hash.rb}, %q{lib/proxy.rb}, %q{lib/string.rb}, %q{lib/yandex_direct_api.rb}]
   s.files = [%q{CHANGELOG}, %q{Gemfile}, %q{Gemfile.lock}, %q{LICENSE}, %q{Manifest}, %q{README}, %q{Rakefile}, %q{lib/api_error.rb}, %q{lib/hash.rb}, %q{lib/proxy.rb}, %q{lib/string.rb}, %q{lib/yandex_direct_api.rb}, %q{spec/hash_spec.rb}, %q{spec/proxy_spec.rb}, %q{spec/spec_helper.rb}, %q{spec/string_spec.rb}, %q{yandex_direct_api.gemspec}]
   s.homepage = %q{http://github.com/dimanlin/yandex_direct_api}
   s.rdoc_options = [%q{--line-numbers}, %q{--inline-source}, %q{--title}, %q{Yadirect}, %q{--main}, %q{README}]
