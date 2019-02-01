@@ -1,3 +1,4 @@
+# PLEASE NOTE, THIS PROJECT IS NO LONGER BEING MAINTAINED
 # Yandex direct api
 
 Simple app for use rails way yandex direct api
